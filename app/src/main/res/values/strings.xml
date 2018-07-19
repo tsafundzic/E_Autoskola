@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">E-Autoskola</string>
+    <string name="SignIn">Prijava</string>
+    <string name="Email">Email</string>
+    <string name="Password">Lozinka</string>
+    <string name="successfulSignIn">Uspješna prijava!</string>
+    <string name="signInError">Greška u prijavi!</string>
+    <string name="candidate">Kandidat</string>
+    <string name="instructor">Instruktor</string>
+    <string name="NotHavingAutorisation">Nemate potrebnu autorizaciju za pristup. Obratite se autoškoli.</string>
+    <string name="wrongEmailOrPassword">Pogrešan email ili lozinka</string>
 </resources>
