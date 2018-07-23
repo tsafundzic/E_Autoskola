@@ -9,4 +9,16 @@
     <string name="instructor">Instruktor</string>
     <string name="NotHavingAutorisation">Nemate potrebnu autorizaciju za pristup. Obratite se autoškoli.</string>
     <string name="wrongEmailOrPassword">Pogrešan email ili lozinka</string>
+    <string name="autorization">Autorizacija u tijeku...</string>
+    <string name="forgottenPassword">Zaboravljena loznika?</string>
+    <string name="account">Račun</string>
+    <string name="newRide">Nova vožnja</string>
+    <string name="rideHistory">Prijašnje vožnje</string>
+    <string name="chat">Chat</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Odjava</string>
+    <string name="wrongEmail">Pogrešan email</string>
+    <string name="passwordMustContain">Lozinka mora sadržavati barem 6 znakova</string>
 </resources>
