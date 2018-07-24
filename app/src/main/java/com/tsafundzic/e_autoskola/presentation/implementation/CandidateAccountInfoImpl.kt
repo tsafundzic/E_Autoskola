@@ -5,33 +5,33 @@ import com.tsafundzic.e_autoskola.interaction.DatabaseInteractorImpl
 import com.tsafundzic.e_autoskola.interaction.UserInteractorImpl
 import com.tsafundzic.e_autoskola.models.Candidate
 import com.tsafundzic.e_autoskola.models.Instructor
-import com.tsafundzic.e_autoskola.presentation.InstructorAccountInfoInterface
+import com.tsafundzic.e_autoskola.presentation.CandidateAccountInfoInterface
 import com.tsafundzic.e_autoskola.presentation.MainInterface
 
-class InstructorAccountInfoImpl(private var view: InstructorAccountInfoInterface.View) : InstructorAccountInfoInterface.Presenter, MainInterface.onLoginListener, MainInterface.onDatabaseListener {
+class CandidateAccountInfoImpl(private var view: CandidateAccountInfoInterface.View) : CandidateAccountInfoInterface.Presenter, MainInterface.onLoginListener, MainInterface.onDatabaseListener {
 
     private var userInteractor: UserInteractorImpl = UserInteractorImpl(this)
     private var databaseInteractor: DatabaseInteractorImpl = DatabaseInteractorImpl(this)
+
+    override fun getCandidateData() {
+        databaseInteractor.getCandidateData(userInteractor.getUserUid())
+        databaseInteractor.getCandidateImage(userInteractor.getUserUid())
+    }
+
+    override fun returnCandidate(candidate: Candidate) {
+        view.setUserData(candidate)
+    }
 
     override fun setUserImage(imageUrl: String) {
         view.setImage(imageUrl)
     }
 
-    override fun returnInstructor(instructor: Instructor) {
-        view.setUserData(instructor)
-    }
-
-    override fun getInstructorData() {
-        databaseInteractor.getInstructorData(userInteractor.getUserUid())
-        databaseInteractor.getInstructorImage(userInteractor.getUserUid())
+    override fun performSignOut() {
+        userInteractor.signOutCurrentUser()
     }
 
     override fun loggedOut() {
         view.finishActivity()
-    }
-
-    override fun performSignOut() {
-        userInteractor.signOutCurrentUser()
     }
 
     override fun onSuccess(user: FirebaseUser?) {}
@@ -50,7 +50,6 @@ class InstructorAccountInfoImpl(private var view: InstructorAccountInfoInterface
 
     override fun setAuthorisationError() {}
 
-    override fun returnCandidate(candidate: Candidate) { }
-
+    override fun returnInstructor(instructor: Instructor) {}
 
 }

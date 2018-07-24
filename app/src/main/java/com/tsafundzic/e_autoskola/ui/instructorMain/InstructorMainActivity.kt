@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.activity_instructor_main.*
 
 class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, InstructorMainInterface.View {
 
-    private lateinit var presenter: InstructorMainInterface.Presenter
-
     companion object {
         fun getLaunchIntent(from: Context) = from.getIntent<InstructorMainActivity>().apply {
         }
     }
+
+    private lateinit var presenter: InstructorMainInterface.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,17 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
     private fun injectDependencies() {
         presenter = InstructorMainPresenterImpl()
         presenter.setView(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        injectDependencies()
+        initBottomNavigation()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        finish()
     }
 
     private fun initBottomNavigation() {

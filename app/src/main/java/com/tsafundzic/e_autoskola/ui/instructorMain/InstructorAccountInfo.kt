@@ -7,39 +7,60 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 import com.tsafundzic.e_autoskola.R
-import com.tsafundzic.e_autoskola.interaction.UserInteractorImpl
+import com.tsafundzic.e_autoskola.models.Instructor
 import com.tsafundzic.e_autoskola.presentation.InstructorAccountInfoInterface
 import com.tsafundzic.e_autoskola.presentation.implementation.InstructorAccountInfoImpl
+import kotlinx.android.synthetic.main.fragment_instructor_account_info.*
 
 
 class InstructorAccountInfo : Fragment(), View.OnClickListener, InstructorAccountInfoInterface.View {
-    override fun finishActivity() {
-        activity?.onBackPressed()
-    }
 
+    lateinit var imageV: ImageView
     private lateinit var presenter: InstructorAccountInfoInterface.Presenter
 
-
     override fun onClick(p0: View?) {
-       presenter.performSignOut()
+        presenter.performSignOut()
 
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_instructor_account_info, container, false)
-        val btn: Button = view.findViewById(R.id.logoutUser)
-        btn.setOnClickListener(this)
+        val logout: Button = view.findViewById(R.id.logoutUser)
+        imageV = view.findViewById(R.id.instructorQr)
+
         injectDependencies()
+
+        logout.setOnClickListener(this)
         return view
     }
 
     private fun injectDependencies() {
-        val userInteractor = UserInteractorImpl()
-        presenter = InstructorAccountInfoImpl(userInteractor)
-        (presenter as InstructorAccountInfoImpl).setView(this)
+        presenter = InstructorAccountInfoImpl(this)
+        presenter.getInstructorData()
+    }
+
+    override fun setImage(imageURL: String) {
+        if (isAdded)
+            Glide.with(this)
+                    .load(imageURL)
+                    .into(imageV)
+    }
+
+    override fun setUserData(instructor: Instructor) {
+        if (isAdded) {
+            instructorName.text = instructor.name
+            instructorEmail.text = instructor.email
+            instructorPhone.text = instructor.phone
+        }
+    }
+
+    override fun finishActivity() {
+        activity?.onBackPressed()
     }
 
 }

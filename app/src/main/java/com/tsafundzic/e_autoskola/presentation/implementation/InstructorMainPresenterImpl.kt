@@ -29,9 +29,7 @@ class InstructorMainPresenterImpl: InstructorMainInterface.Presenter {
             R.id.rideHistory -> {
                 changeFragments(fragmentLayout, RideHistory(), activity)
             }
-
         }
-
     }
 
     override fun callFragmentChange(fragmentLayout: Int, fragment: Fragment, activity: Activity) {

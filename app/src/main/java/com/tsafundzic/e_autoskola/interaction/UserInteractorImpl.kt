@@ -1,45 +1,43 @@
 package com.tsafundzic.e_autoskola.interaction
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
-import com.tsafundzic.e_autoskola.ui.main.MainActivity
+import com.google.firebase.auth.FirebaseUser
+import com.tsafundzic.e_autoskola.presentation.MainInterface
 
-class UserInteractorImpl : UserInteractorInterface {
+class UserInteractorImpl(private var onLoginListener: MainInterface.onLoginListener) : UserInteractorInterface {
 
     var mAuth = FirebaseAuth.getInstance()
 
-    //private lateinit var main : MainInterface.Presenter
-     fun performFirebaseLogin(activity: MainActivity, email: String, password: String) {
+    fun performFirebaseLogin(email: String, password: String) {
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-
                         val user = mAuth.currentUser
-
-                        if (user != null) {
-                           // main.onSuccessLogin(user)
-                        }
-
-
-                        //view.getLoggedUser(user)
-                        //updateUI(user)
-
-                        //Toast.makeText(this, R.string.successfulSignIn, Toast.LENGTH_SHORT).show()
-
+                        onLoginListener.onSuccess(user)
                     } else {
-
-                        // If sign in fails, display a message to the user.
-                        Log.w("signInWithEmail:failure", task.exception)
-                        //Toast.makeText(this, R.string.signInError, Toast.LENGTH_SHORT).show()
-                        //updateUI(null)
+                        onLoginListener.onFailure()
                     }
-
                 }
     }
 
-    override fun signOutCurrentUser(){
+    override fun checkLoggedUser(): FirebaseUser? {
+        val user = mAuth.currentUser
+        if (user != null) {
+            onLoginListener.checkUserRole(user)
+        } else {
+            onLoginListener.turnOffProgressBar()
+        }
+        return user
+    }
+
+    override fun getUserUid(): String {
+        return mAuth.uid.toString()
+    }
+
+    override fun signOutCurrentUser() {
         mAuth.signOut()
+        onLoginListener.loggedOut()
     }
 
 }

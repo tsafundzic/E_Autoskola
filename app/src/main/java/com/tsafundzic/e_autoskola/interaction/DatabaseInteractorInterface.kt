@@ -7,6 +7,14 @@ interface DatabaseInteractorInterface {
 
     fun getDatabaseRef(): DatabaseReference
 
-    fun getUserRole(user: FirebaseUser)
+    fun getUserRole(user: FirebaseUser?)
+
+    fun getInstructorData(uid: String)
+
+    fun getInstructorImage(uid: String)
+
+    fun getCandidateData(uid: String)
+
+    fun getCandidateImage(uid: String)
 
 }

@@ -1,14 +1,14 @@
 package com.tsafundzic.e_autoskola.presentation
 
-import com.tsafundzic.e_autoskola.models.Instructor
+import com.tsafundzic.e_autoskola.models.Candidate
 
-interface InstructorAccountInfoInterface {
+interface CandidateAccountInfoInterface {
 
     interface View{
 
         fun finishActivity()
 
-        fun setUserData(instructor: Instructor)
+        fun setUserData(candidate: Candidate)
 
         fun setImage(imageURL: String)
 
@@ -18,6 +18,6 @@ interface InstructorAccountInfoInterface {
 
         fun performSignOut()
 
-        fun getInstructorData()
+        fun getCandidateData()
     }
 }

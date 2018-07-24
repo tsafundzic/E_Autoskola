@@ -1,46 +1,35 @@
 package com.tsafundzic.e_autoskola.presentation.implementation
 
-import com.google.firebase.auth.FirebaseAuth
+
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.tsafundzic.e_autoskola.common.constants.CANDIDATE
-import com.tsafundzic.e_autoskola.common.constants.INSTRUCTOR
-import com.tsafundzic.e_autoskola.common.constants.ROLE
-import com.tsafundzic.e_autoskola.common.constants.USERS
 import com.tsafundzic.e_autoskola.common.helpers.isValidEmail
-import com.tsafundzic.e_autoskola.interaction.DatabaseInteractorInterface
+import com.tsafundzic.e_autoskola.interaction.DatabaseInteractorImpl
 import com.tsafundzic.e_autoskola.interaction.UserInteractorImpl
+import com.tsafundzic.e_autoskola.models.Candidate
+import com.tsafundzic.e_autoskola.models.Instructor
 import com.tsafundzic.e_autoskola.presentation.MainInterface
-import com.tsafundzic.e_autoskola.ui.main.MainActivity
 
 
-class MainPresenterImpl(private var databaseInteractor: DatabaseInteractorInterface, private var userInteractor: UserInteractorImpl) : MainInterface.Presenter {
-
-    private lateinit var view: MainInterface.View
-
-    override fun setView(view: MainInterface.View) {
-        this.view = view
+class MainPresenterImpl(private var view: MainInterface.View) : MainInterface.Presenter, MainInterface.onLoginListener, MainInterface.onDatabaseListener {
+    override fun returnCandidate(candidate: Candidate) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun signIn(activity: MainActivity, email: String, password: String) {
+    override fun setUserImage(uid: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun returnInstructor(instructor: Instructor) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private var userInteractor: UserInteractorImpl = UserInteractorImpl(this)
+    private var databaseInteractor: DatabaseInteractorImpl = DatabaseInteractorImpl(this)
+
+    override fun signIn(email: String, password: String) {
         if (email.isValidEmail()) {
             if (password.isNotEmpty()) {
-                userInteractor.mAuth
-                        .signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val user = userInteractor.mAuth.currentUser
-                                if (user != null) {
-                                    checkUserRole(user)
-                                }
-                            } else {
-                                view.errorWrongUserInformation()
-                            }
-
-                        }
-                userInteractor.performFirebaseLogin(activity, email, password)
+                userInteractor.performFirebaseLogin(email, password)
             } else {
                 view.setPasswordError()
             }
@@ -49,42 +38,43 @@ class MainPresenterImpl(private var databaseInteractor: DatabaseInteractorInterf
         }
     }
 
-    override fun onSuccessLogin(user: FirebaseUser) {
-        view.startCandidateMainActivity()
+    override fun checkUserRole(user: FirebaseUser) {
         databaseInteractor.getUserRole(user)
     }
 
     override fun checkForLoggedUser() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        ifUserIsLogged(currentUser)
+        val user = userInteractor.checkLoggedUser()
     }
 
-    private fun ifUserIsLogged(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
-            checkUserRole(currentUser)
-        } else {
-            view.turnOffProgress()
+    override fun onFailure() {
+        view.errorWrongUserInformation()
+    }
+
+    override fun turnOffProgressBar() {
+        view.turnOffProgress()
+    }
+
+    override fun setViewToCandidateMainActivity() {
+        view.startCandidateMainActivity()
+    }
+
+    override fun setAuthorisationError() {
+        view.errorNotHaveAuthorisation()
+    }
+
+    override fun setViewToInstructorMainActivity() {
+        view.startInstructorMainActivity()
+    }
+
+    override fun getUserRole(user: FirebaseUser?) {
+        databaseInteractor.getUserRole(user)
+    }
+
+    override fun onSuccess(user: FirebaseUser?) {
+        if (user != null) {
+            databaseInteractor.getUserRole(user)
         }
     }
 
-    private fun checkUserRole(user: FirebaseUser) {
-        val userRoleListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val userRole = dataSnapshot.value.toString()
-                if (userRole == CANDIDATE) {
-                    view.startCandidateMainActivity()
-                } else if (userRole == INSTRUCTOR) {
-                    view.startInstructorMainActivity()
-                } else {
-                    view.errorNotHaveAutorisation()
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {}
-        }
-        databaseInteractor.getDatabaseRef().child(USERS).child(user.uid).child(ROLE).addListenerForSingleValueEvent(userRoleListener)
-
-    }
-
-
+    override fun loggedOut() { }
 }

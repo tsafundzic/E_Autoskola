@@ -3,46 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_vertical"
-    tools:context=".ui.instructorMain.InstructorAccountInfo">
+    android:orientation="vertical"
+    tools:context=".ui.candidateMain.CandidateAccountInfo">
 
 
     <ImageView
-        android:id="@+id/instructorQr"
+        android:id="@+id/candidateQr"
         android:layout_width="160dp"
         android:layout_height="160dp" />
 
     <TextView
-        android:id="@+id/instructorName"
+        android:id="@+id/candidateName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        android:layout_toRightOf="@id/instructorQr"
-        android:layout_toEndOf="@id/instructorQr" />
+        android:layout_toEndOf="@id/candidateQr"
+        android:layout_toRightOf="@id/candidateQr"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/instructorEmail"
+        android:id="@+id/candidateEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/instructorName"
-        android:layout_toRightOf="@id/instructorQr"
-        android:layout_toEndOf="@id/instructorQr" />
+        android:layout_below="@id/candidateName"
+        android:layout_toEndOf="@id/candidateQr"
+        android:layout_toRightOf="@id/candidateQr" />
 
     <TextView
-        android:id="@+id/instructorPhone"
+        android:id="@+id/candidatePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/instructorEmail"
-        android:layout_toRightOf="@id/instructorQr"
-        android:layout_toEndOf="@id/instructorQr" />
+        android:layout_below="@id/candidateEmail"
+        android:layout_toEndOf="@id/candidateQr"
+        android:layout_toRightOf="@id/candidateQr" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/logoutUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:layout_below="@id/instructorQr"/>
+        android:layout_below="@id/candidateQr"
+        android:text="@string/logout" />
 
 </RelativeLayout>

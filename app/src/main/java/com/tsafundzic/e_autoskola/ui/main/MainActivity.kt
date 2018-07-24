@@ -8,8 +8,6 @@ import com.tsafundzic.e_autoskola.ui.candidateMain.CandidateMainActivity
 import com.tsafundzic.e_autoskola.ui.instructorMain.InstructorMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.tsafundzic.e_autoskola.R
-import com.tsafundzic.e_autoskola.interaction.DatabaseInteractorImpl
-import com.tsafundzic.e_autoskola.interaction.UserInteractorImpl
 import com.tsafundzic.e_autoskola.presentation.MainInterface
 import com.tsafundzic.e_autoskola.presentation.implementation.MainPresenterImpl
 
@@ -17,7 +15,6 @@ import com.tsafundzic.e_autoskola.presentation.implementation.MainPresenterImpl
 class MainActivity : AppCompatActivity(), MainInterface.View {
 
     private lateinit var presenter: MainInterface.Presenter
-
     private lateinit var mProgressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +26,9 @@ class MainActivity : AppCompatActivity(), MainInterface.View {
     }
 
     private fun injectDependencies() {
-
         mProgressDialog = ProgressDialog(this)
         mProgressDialog.setMessage(getString(R.string.autorization))
-
-        val databaseInteractor = DatabaseInteractorImpl()
-        val userInteractor = UserInteractorImpl()
-        presenter = MainPresenterImpl(databaseInteractor, userInteractor)
-        presenter.setView(this)
+        presenter = MainPresenterImpl(this)
     }
 
     public override fun onStart() {
@@ -47,7 +39,7 @@ class MainActivity : AppCompatActivity(), MainInterface.View {
 
     private fun startSignIn() {
         mProgressDialog.show()
-        presenter.signIn(this, email_login.text.toString(), password_login.text.toString())
+        presenter.signIn(email_login.text.toString(), password_login.text.toString())
     }
 
     override fun startCandidateMainActivity() {
@@ -60,7 +52,7 @@ class MainActivity : AppCompatActivity(), MainInterface.View {
         startActivity(InstructorMainActivity.getLaunchIntent(this))
     }
 
-    override fun errorNotHaveAutorisation() {
+    override fun errorNotHaveAuthorisation() {
         mProgressDialog.dismiss()
         toast(getString(R.string.NotHavingAutorisation))
     }
