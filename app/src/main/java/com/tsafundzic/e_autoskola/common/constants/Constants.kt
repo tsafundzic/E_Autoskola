@@ -23,3 +23,6 @@ const val SELECTEDINSTRUCTOR: String="selectedInstructor"
 const val PASSEDDRIVETEST : String="PassedDriveTest"
 const val PASSEDFIRSTAID: String="PassedFirstAid"
 const val PASSEDTRAFFICREGULATIONS: String="PassedTrafficRegulations"
+
+const val CITY : String ="city"
+const val IBAN : String ="iban"

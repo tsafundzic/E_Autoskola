@@ -17,4 +17,6 @@ interface DatabaseInteractorInterface {
 
     fun getCandidateImage(uid: String)
 
+    fun getSchoolInfoData(schoolId: String)
+
 }

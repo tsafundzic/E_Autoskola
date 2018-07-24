@@ -7,21 +7,11 @@ import com.tsafundzic.e_autoskola.interaction.DatabaseInteractorImpl
 import com.tsafundzic.e_autoskola.interaction.UserInteractorImpl
 import com.tsafundzic.e_autoskola.models.Candidate
 import com.tsafundzic.e_autoskola.models.Instructor
+import com.tsafundzic.e_autoskola.models.School
 import com.tsafundzic.e_autoskola.presentation.MainInterface
 
 
 class MainPresenterImpl(private var view: MainInterface.View) : MainInterface.Presenter, MainInterface.onLoginListener, MainInterface.onDatabaseListener {
-    override fun returnCandidate(candidate: Candidate) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun setUserImage(uid: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun returnInstructor(instructor: Instructor) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     private var userInteractor: UserInteractorImpl = UserInteractorImpl(this)
     private var databaseInteractor: DatabaseInteractorImpl = DatabaseInteractorImpl(this)
@@ -77,4 +67,12 @@ class MainPresenterImpl(private var view: MainInterface.View) : MainInterface.Pr
     }
 
     override fun loggedOut() { }
+
+    override fun returnSchool(school: School) {}
+
+    override fun returnCandidate(candidate: Candidate) {}
+
+    override fun setUserImage(uid: String) {}
+
+    override fun returnInstructor(instructor: Instructor) {}
 }

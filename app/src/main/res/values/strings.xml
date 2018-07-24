@@ -21,4 +21,7 @@
     <string name="logout">Odjava</string>
     <string name="wrongEmail">Pogrešan email</string>
     <string name="passwordMustContain">Lozinka mora sadržavati barem 6 znakova</string>
+    <string name="emailPasswordExplain">Unesi email svog računa na koji će ti doći poveznica za kreiranje nove lozinke</string>
+    <string name="confirm">Potvrdi</string>
+    <string name="successufulEmailSend">Email za promjenu zaporke je uspješno poslan!</string>
 </resources>

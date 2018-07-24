@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity(), MainInterface.View {
 
         injectDependencies()
         button_login.setOnClickListener { startSignIn() }
+        forgottenPassword.setOnClickListener { startForgottenPassword() }
+    }
+
+    private fun startForgottenPassword() {
+        startActivity(ForgottenPasswordActivity.getLaunchIntent(this))
     }
 
     private fun injectDependencies() {
@@ -43,7 +48,7 @@ class MainActivity : AppCompatActivity(), MainInterface.View {
     }
 
     override fun startCandidateMainActivity() {
-        mProgressDialog.dismiss()
+        //mProgressDialog.dismiss()
         startActivity(CandidateMainActivity.getLaunchIntent(this))
     }
 

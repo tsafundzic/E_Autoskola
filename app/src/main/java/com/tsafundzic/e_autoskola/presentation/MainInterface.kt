@@ -3,6 +3,7 @@ package com.tsafundzic.e_autoskola.presentation
 import com.google.firebase.auth.FirebaseUser
 import com.tsafundzic.e_autoskola.models.Candidate
 import com.tsafundzic.e_autoskola.models.Instructor
+import com.tsafundzic.e_autoskola.models.School
 
 interface MainInterface {
 
@@ -60,6 +61,8 @@ interface MainInterface {
         fun setUserImage(imageUrl: String)
 
         fun returnCandidate(candidate: Candidate)
+
+        fun returnSchool(school: School)
     }
 
 }

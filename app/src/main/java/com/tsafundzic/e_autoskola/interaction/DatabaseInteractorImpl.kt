@@ -6,10 +6,29 @@ import com.google.firebase.storage.FirebaseStorage
 import com.tsafundzic.e_autoskola.common.constants.*
 import com.tsafundzic.e_autoskola.models.Candidate
 import com.tsafundzic.e_autoskola.models.Instructor
+import com.tsafundzic.e_autoskola.models.School
 import com.tsafundzic.e_autoskola.presentation.MainInterface
 
 
 class DatabaseInteractorImpl(private var databaseListener: MainInterface.onDatabaseListener) : DatabaseInteractorInterface {
+    override fun getSchoolInfoData(schoolId: String) {
+        val instructorData = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                val school = School(dataSnapshot.child(ADDRESS).value.toString(),
+                        dataSnapshot.child(CITY).value.toString(),
+                        dataSnapshot.child(PHONE).value.toString(),
+                        dataSnapshot.child(IBAN).value.toString(),
+                        dataSnapshot.child(NAME).value.toString(),
+                        dataSnapshot.child(OIB).value.toString(),
+                        dataSnapshot.child(EMAIL).value.toString()
+                )
+                databaseListener.returnSchool(school)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        }
+        myRef.child(SCHOOLS).child(schoolId).addListenerForSingleValueEvent(instructorData)    }
 
     private var database = FirebaseDatabase.getInstance()
     private var myRef = database.reference

@@ -3,46 +3,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_margin="@dimen/smallMargin"
     android:gravity="center_vertical"
+    android:orientation="vertical"
     tools:context=".ui.instructorMain.InstructorAccountInfo">
 
 
-    <ImageView
-        android:id="@+id/instructorQr"
-        android:layout_width="160dp"
-        android:layout_height="160dp" />
-
-    <TextView
-        android:id="@+id/instructorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        android:layout_toRightOf="@id/instructorQr"
-        android:layout_toEndOf="@id/instructorQr" />
-
-    <TextView
-        android:id="@+id/instructorEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/instructorName"
-        android:layout_toRightOf="@id/instructorQr"
-        android:layout_toEndOf="@id/instructorQr" />
-
-    <TextView
-        android:id="@+id/instructorPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/instructorEmail"
-        android:layout_toRightOf="@id/instructorQr"
-        android:layout_toEndOf="@id/instructorQr" />
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/logoutUser"
+    <RelativeLayout
+        android:id="@+id/instructorSelection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:layout_below="@id/instructorQr"/>
+        android:layout_marginBottom="@dimen/bigMargin">
+
+        <ImageView
+            android:id="@+id/instructorQr"
+            android:layout_width="160dp"
+            android:layout_height="160dp" />
+
+        <TextView
+            android:id="@+id/instructorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/instructorQr"
+            android:layout_toRightOf="@id/instructorQr"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/instructorEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instructorName"
+            android:layout_toEndOf="@id/instructorQr"
+            android:layout_toRightOf="@id/instructorQr" />
+
+        <TextView
+            android:id="@+id/instructorPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instructorEmail"
+            android:layout_toEndOf="@id/instructorQr"
+            android:layout_toRightOf="@id/instructorQr" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/logoutUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instructorQr"
+            android:text="@string/logout" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/SchoolSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instructorSelection">
+
+        <TextView
+            android:id="@+id/selectedSchool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/tile" />
+
+        <TextView
+            android:id="@+id/schoolPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/selectedSchool"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/schoolEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schoolPhone"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/schoolIban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schoolEmail"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/schoolOib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schoolIban"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/schoolAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schoolOib"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/schoolCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/schoolAddress"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/grey" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

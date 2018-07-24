@@ -38,6 +38,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.firebaseui:firebase-ui-storage:2.3.0'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 
     compile 'com.android.support:design:27.1.0'
 

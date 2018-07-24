@@ -5,6 +5,7 @@ import com.tsafundzic.e_autoskola.interaction.DatabaseInteractorImpl
 import com.tsafundzic.e_autoskola.interaction.UserInteractorImpl
 import com.tsafundzic.e_autoskola.models.Candidate
 import com.tsafundzic.e_autoskola.models.Instructor
+import com.tsafundzic.e_autoskola.models.School
 import com.tsafundzic.e_autoskola.presentation.InstructorAccountInfoInterface
 import com.tsafundzic.e_autoskola.presentation.MainInterface
 
@@ -34,6 +35,14 @@ class InstructorAccountInfoImpl(private var view: InstructorAccountInfoInterface
         userInteractor.signOutCurrentUser()
     }
 
+    override fun getSchoolInfo(schoolId: String) {
+        databaseInteractor.getSchoolInfoData(schoolId)
+    }
+
+    override fun returnSchool(school: School) {
+        view.setSchoolData(school)
+    }
+
     override fun onSuccess(user: FirebaseUser?) {}
 
     override fun turnOffProgressBar() {}
@@ -50,7 +59,7 @@ class InstructorAccountInfoImpl(private var view: InstructorAccountInfoInterface
 
     override fun setAuthorisationError() {}
 
-    override fun returnCandidate(candidate: Candidate) { }
+    override fun returnCandidate(candidate: Candidate) {}
 
 
 }
