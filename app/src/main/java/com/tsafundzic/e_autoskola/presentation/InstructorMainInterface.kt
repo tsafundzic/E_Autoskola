@@ -1,11 +1,16 @@
 package com.tsafundzic.e_autoskola.presentation
 
 import android.app.Activity
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 
 interface InstructorMainInterface {
     interface View {
+
+        fun startAccountInfo()
+
+        fun startNewRide(fragment: Fragment)
 
     }
 
@@ -14,6 +19,9 @@ interface InstructorMainInterface {
         fun checkNewFragment(item: MenuItem, fragmentLayout: Int,  activity: Activity)
 
         fun callFragmentChange(fragmentLayout: Int, fragment: Fragment, activity: Activity)
+
+        fun checkIfHasExtras(extras: String?)
+
     }
 
 }

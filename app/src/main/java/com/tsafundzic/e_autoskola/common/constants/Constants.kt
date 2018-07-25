@@ -17,12 +17,18 @@ const val PHONE: String = "phone"
 const val INSTRUCTORS: String = "instructors"
 const val CANDIDATES: String = "candidates"
 
-const val CATEGORY: String ="category"
-const val PAYMENT: String="payment"
-const val SELECTEDINSTRUCTOR: String="selectedInstructor"
-const val PASSEDDRIVETEST : String="PassedDriveTest"
-const val PASSEDFIRSTAID: String="PassedFirstAid"
-const val PASSEDTRAFFICREGULATIONS: String="PassedTrafficRegulations"
+const val CATEGORY: String = "category"
+const val PAYMENT: String = "payment"
+const val SELECTEDINSTRUCTOR: String = "selectedInstructor"
+const val PASSEDDRIVETEST: String = "PassedDriveTest"
+const val PASSEDFIRSTAID: String = "PassedFirstAid"
+const val PASSEDTRAFFICREGULATIONS: String = "PassedTrafficRegulations"
 
-const val CITY : String ="city"
-const val IBAN : String ="iban"
+const val CITY: String = "city"
+const val IBAN: String = "iban"
+
+const val ID: String = "id"
+
+const val CANDIDATEID: String = "candidateId"
+
+const val BARCODE: String = "barcode"

@@ -24,4 +24,9 @@
     <string name="emailPasswordExplain">Unesi email svog računa na koji će ti doći poveznica za kreiranje nove lozinke</string>
     <string name="confirm">Potvrdi</string>
     <string name="successufulEmailSend">Email za promjenu zaporke je uspješno poslan!</string>
+    <string name="scanCandidate">Skeniraj kandidata</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Odustani</string>
+    <string name="notSelected">Kandidat nije odabran</string>
+    <string name="startRide">Pokreni vožnju</string>
 </resources>

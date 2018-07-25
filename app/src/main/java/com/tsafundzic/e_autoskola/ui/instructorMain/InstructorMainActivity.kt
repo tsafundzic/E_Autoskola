@@ -4,8 +4,10 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.view.MenuItem
 import com.tsafundzic.e_autoskola.R
+import com.tsafundzic.e_autoskola.common.constants.BARCODE
 import com.tsafundzic.e_autoskola.common.extensions.getIntent
 import com.tsafundzic.e_autoskola.presentation.InstructorMainInterface
 import com.tsafundzic.e_autoskola.presentation.implementation.InstructorMainPresenterImpl
@@ -16,6 +18,9 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
     companion object {
         fun getLaunchIntent(from: Context) = from.getIntent<InstructorMainActivity>().apply {
         }
+        fun getLaunchIntent(from: Context, barcode: String) = from.getIntent<InstructorMainActivity>().apply {
+            putExtra(BARCODE, barcode)
+        }
     }
 
     private lateinit var presenter: InstructorMainInterface.Presenter
@@ -25,25 +30,34 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
         setContentView(R.layout.activity_instructor_main)
 
         injectDependencies()
+
         initBottomNavigation()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkNewRideIntent()
+    }
+
+    private fun checkNewRideIntent() {
+        presenter.checkIfHasExtras(intent.getStringExtra(BARCODE))
+    }
+
+    override fun startAccountInfo() {
         presenter.callFragmentChange(R.id.instructorFragmentLayout, InstructorAccountInfo(), this)
 
+        instructorBottomNav.menu.getItem(0).isChecked = true
+    }
+
+    override fun startNewRide(fragment: Fragment) {
+        presenter.callFragmentChange(R.id.instructorFragmentLayout, fragment, this)
+
+        instructorBottomNav.menu.getItem(1).isChecked = true
     }
 
     private fun injectDependencies() {
         presenter = InstructorMainPresenterImpl()
         presenter.setView(this)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        injectDependencies()
-        initBottomNavigation()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        finish()
     }
 
     private fun initBottomNavigation() {
@@ -56,5 +70,6 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
 
         return true
     }
+
 
 }
