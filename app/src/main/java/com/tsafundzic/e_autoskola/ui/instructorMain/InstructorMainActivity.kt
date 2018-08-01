@@ -7,7 +7,6 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import com.tsafundzic.e_autoskola.R
-import com.tsafundzic.e_autoskola.common.constants.BARCODE
 import com.tsafundzic.e_autoskola.common.constants.CANDIDATEID
 import com.tsafundzic.e_autoskola.common.constants.CANDIDATENAME
 import com.tsafundzic.e_autoskola.common.extensions.getIntent

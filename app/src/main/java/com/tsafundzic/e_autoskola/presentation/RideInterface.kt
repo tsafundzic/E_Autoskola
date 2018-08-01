@@ -39,19 +39,17 @@ interface RideInterface {
 
         fun getCurrentTime()
 
-        fun saveToDatabase(candidateId: String, mLastLocation: Location, currentRideHour: Int)
+        fun saveToDatabase(candidateId: String, mLastLocation: Location)
 
         fun getRideNumber(candidateId: String)
 
-        fun checkComments(comment: String, candidateId: String, currentRideHour: Int)
+        fun checkComments(comment: String, candidateId: String)
 
     }
 
     interface OnDatabaseListener {
 
         fun returnLastRideHour(lastRideHour: String?)
-
-        //fun returnCandidateName(candidateName: String)
 
     }
 }

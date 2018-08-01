@@ -43,7 +43,6 @@ class RideActivity : AppCompatActivity(), RideInterface.View, OnMapReadyCallback
     private lateinit var mGoogleApiClient: GoogleApiClient
 
     lateinit var mLocationRequest: LocationRequest
-    private var currentRideHour: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +56,7 @@ class RideActivity : AppCompatActivity(), RideInterface.View, OnMapReadyCallback
         endRide.setOnClickListener { finishRide() }
     }
 
+    override fun onBackPressed() {}
     override fun setErrorNoComments() {
         comments.error = getString(R.string.emptyCommentError)
     }
@@ -69,13 +69,9 @@ class RideActivity : AppCompatActivity(), RideInterface.View, OnMapReadyCallback
     }
 
     override fun setRideHour(lastRideHour: Int?) {
-        if (lastRideHour != null) {
-            currentRideHour = lastRideHour + 1
 
-            rideHourNumber.text = currentRideHour.toString()
-        } else {
-            rideHourNumber.text = currentRideHour.toString()
-        }
+        rideHourNumber.text = lastRideHour.toString()
+
     }
 
     override fun setStartedTime(startedTime: String) {
@@ -125,7 +121,7 @@ class RideActivity : AppCompatActivity(), RideInterface.View, OnMapReadyCallback
     override fun onConnectionSuspended(p0: Int) {}
 
     private fun finishRide() {
-        presenter.checkComments(comments.text.toString(), intent.getStringExtra(CANDIDATEID), currentRideHour)
+        presenter.checkComments(comments.text.toString(), intent.getStringExtra(CANDIDATEID))
 
     }
 
@@ -159,7 +155,7 @@ class RideActivity : AppCompatActivity(), RideInterface.View, OnMapReadyCallback
 
     override fun onLocationChanged(location: Location) {
 
-        presenter.saveToDatabase(intent.getStringExtra(CANDIDATEID), location, currentRideHour)
+        presenter.saveToDatabase(intent.getStringExtra(CANDIDATEID), location)
 
         val latLng = LatLng(location.latitude, location.longitude)
 

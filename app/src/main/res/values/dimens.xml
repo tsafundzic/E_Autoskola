@@ -3,4 +3,6 @@
     <dimen name="tile">20sp</dimen>
     <dimen name="bigMargin">30dp</dimen>
     <dimen name="smallMargin">10dp</dimen>
+    <dimen name="marginButtons">21dp</dimen>
+    <dimen name="marginChronometer">35dp</dimen>
 </resources>

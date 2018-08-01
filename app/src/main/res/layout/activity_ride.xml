@@ -11,59 +11,76 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/bigMargin">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/candidate"
+            <RelativeLayout
+                android:id="@+id/rideInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/candidate"
-                android:textStyle="bold" />
+                android:layout_margin="@dimen/smallMargin">
 
-            <TextView
-                android:id="@+id/candidateNameShow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/candidate" />
+                <TextView
+                    android:id="@+id/candidate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/candidate"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/rideHour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/candidate"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/ridehour"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/candidateNameShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toRightOf="@id/candidate" />
 
-            <TextView
-                android:id="@+id/rideHourNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/candidate"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/rideHour"
-                android:layout_toEndOf="@id/rideHour" />
+                <TextView
+                    android:id="@+id/rideHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/candidate"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/ridehour"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/rideStarted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rideHour"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/ridestarted"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/rideHourNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/candidate"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toEndOf="@id/rideHour"
+                    android:layout_toRightOf="@id/rideHour" />
 
-            <TextView
-                android:id="@+id/rideStartedTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rideHour"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/rideStarted" />
+                <Chronometer
+                    android:id="@+id/timeCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/marginChronometer"
+                    android:layout_alignParentEnd="true" />
 
+                <TextView
+                    android:id="@+id/rideStarted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rideHour"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/ridestarted"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/rideStartedTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rideHour"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toRightOf="@id/rideStarted" />
+
+            </RelativeLayout>
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -71,7 +88,7 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_below="@id/rideStartedTime"
+                android:layout_below="@id/rideInfo"
                 android:layout_marginTop="@dimen/smallMargin"
                 tools:context=".MapLocationActivity" />
 
@@ -81,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_below="@+id/map"
-                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_margin="@dimen/smallMargin"
                 android:hint="@string/commentsOnRide" />
 
             <android.support.v7.widget.AppCompatButton
@@ -89,17 +106,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/comments"
-                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_margin="@dimen/smallMargin"
                 android:text="@string/endRide" />
 
-            <Chronometer
-                android:id="@+id/timeCounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_margin="@dimen/smallMargin" />
+
 
         </RelativeLayout>
     </FrameLayout>

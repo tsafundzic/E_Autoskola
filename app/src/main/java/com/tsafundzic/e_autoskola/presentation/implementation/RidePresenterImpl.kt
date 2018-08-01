@@ -16,7 +16,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class RidePresenterImpl(private var view: RideInterface.View) : RideInterface.Presenter, RideInterface.OnDatabaseListener {
-    override fun checkComments(comment: String, candidateId: String, currentRideHour: Int) {
+
+    private var currentRideHour: Int = 1
+
+    override fun checkComments(comment: String, candidateId: String) {
         if (comment.isNotEmpty()) {
             databaseInteractor.saveComment(comment, candidateId, currentRideHour)
             view.rideFinishedSuccessful()
@@ -26,15 +29,24 @@ class RidePresenterImpl(private var view: RideInterface.View) : RideInterface.Pr
     }
 
     override fun returnLastRideHour(lastRideHour: String?) {
-        val number = lastRideHour?.toIntOrNull()
-        view.setRideHour(number)
+        val lastRideHourNumber = lastRideHour?.toIntOrNull()
+        if (lastRideHourNumber != null) {
+            currentRideHour = lastRideHourNumber + 1
+
+            view.setRideHour(currentRideHour)
+
+        } else {
+
+            view.setRideHour(currentRideHour)
+
+        }
     }
 
     override fun getRideNumber(candidateId: String) {
         databaseInteractor.getCurrentRideHour(candidateId)
     }
 
-    override fun saveToDatabase(candidateId: String, mLastLocation: Location, currentRideHour: Int) {
+    override fun saveToDatabase(candidateId: String, mLastLocation: Location) {
         databaseInteractor.saveToDatabase(candidateId, mLastLocation, currentRideHour)
     }
 

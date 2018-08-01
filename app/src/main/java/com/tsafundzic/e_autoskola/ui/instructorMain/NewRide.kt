@@ -40,6 +40,7 @@ class NewRide : Fragment(), NewRideInterface.View {
         return view
     }
 
+
     override fun onResume() {
         super.onResume()
         getBundleExtras()

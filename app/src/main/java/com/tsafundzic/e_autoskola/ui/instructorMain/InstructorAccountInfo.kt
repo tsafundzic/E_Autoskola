@@ -23,11 +23,6 @@ class InstructorAccountInfo : Fragment(), View.OnClickListener, InstructorAccoun
     lateinit var imageV: ImageView
     private lateinit var presenter: InstructorAccountInfoInterface.Presenter
 
-    override fun onClick(p0: View?) {
-        presenter.performSignOut()
-
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater.inflate(R.layout.fragment_instructor_account_info, container, false)
@@ -43,6 +38,11 @@ class InstructorAccountInfo : Fragment(), View.OnClickListener, InstructorAccoun
     private fun injectDependencies() {
         presenter = InstructorAccountInfoImpl(this)
         presenter.getInstructorData()
+    }
+
+    override fun onClick(p0: View?) {
+        presenter.performSignOut()
+
     }
 
     override fun setImage(imageURL: String) {
@@ -75,7 +75,7 @@ class InstructorAccountInfo : Fragment(), View.OnClickListener, InstructorAccoun
     }
 
     override fun finishActivity() {
-        activity?.onBackPressed()
+        activity?.finish()
     }
 
 }

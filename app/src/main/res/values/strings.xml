@@ -41,4 +41,7 @@
     <string name="emptyCommentError">Dodaj komentar na vožnju</string>
     <string name="rideended">Kraj vožnje</string>
     <string name="close">Zatvori</string>
+    <string name="candidate_format">Kandidat:  %1$s</string>
+    <string name="rideHourFormat">Sat vožnje: %1$d</string>
+    <string name="checkRidesDetails">Pregled detalja vožnje</string>
 </resources>

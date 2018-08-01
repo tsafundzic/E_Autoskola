@@ -13,91 +13,111 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/candidate"
+            <RelativeLayout
+                android:id="@+id/rideInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/candidate"
-                android:textStyle="bold" />
+                android:layout_margin="@dimen/smallMargin">
 
-            <TextView
-                android:id="@+id/candidateName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/candidate" />
+                <TextView
+                    android:id="@+id/candidate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/candidate"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/rideHour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/candidate"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/ridehour"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/candidateName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toRightOf="@id/candidate"
+                    android:layout_marginStart="@dimen/smallMargin"
+                    android:layout_toEndOf="@id/candidate" />
 
-            <TextView
-                android:id="@+id/rideHourNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/candidateName"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/candidate" />
+                <TextView
+                    android:id="@+id/rideHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/candidate"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/ridehour"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/startTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rideHour"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/ridestarted"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/rideHourNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/candidate"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toEndOf="@id/rideHour"
+                    android:layout_toRightOf="@id/rideHour"
+                    android:layout_marginStart="@dimen/smallMargin" />
 
-            <TextView
-                android:id="@+id/startTimeDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rideHourNumber"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/candidate" />
+                <TextView
+                    android:id="@+id/startTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rideHour"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/ridestarted"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/endTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/startTime"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/rideended"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/startTimeDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rideHourNumber"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toRightOf="@id/startTime"
+                    android:layout_marginStart="@dimen/smallMargin"
+                    android:layout_toEndOf="@id/startTime" />
 
-            <TextView
-                android:id="@+id/endTimeDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/startTimeDate"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:layout_toRightOf="@id/candidate" />
+                <TextView
+                    android:id="@+id/endTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/startTime"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:text="@string/rideended"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/endTimeDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/startTimeDate"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_toRightOf="@id/endTime"
+                    android:layout_marginStart="@dimen/smallMargin"
+                    android:layout_toEndOf="@id/endTime" />
 
 
-            <ImageButton
-                android:id="@+id/bNextHour"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/candidate"
-                android:src="@drawable/ic_next"
-                android:layout_alignParentEnd="true" />
+                <ImageButton
+                    android:id="@+id/nextHour"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/marginButtons"
+                    android:src="@drawable/ic_next"
+                    android:layout_alignParentEnd="true" />
 
-            <ImageButton
-                android:id="@+id/bPreviousHour"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/candidate"
-                android:layout_toLeftOf="@id/bNextHour"
-                android:src="@drawable/ic_previous"
-                android:layout_toStartOf="@id/bNextHour" />
+                <ImageButton
+                    android:id="@+id/previousHour"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/marginButtons"
+                    android:layout_toLeftOf="@id/nextHour"
+                    android:layout_toStartOf="@id/nextHour"
+                    android:src="@drawable/ic_previous" />
 
+
+            </RelativeLayout>
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -105,7 +125,7 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_below="@id/endTime"
+                android:layout_below="@id/rideInfo"
                 tools:context=".MapLocationActivity" />
 
 
@@ -114,15 +134,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/map"
-                android:layout_marginTop="@dimen/smallMargin" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/close"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/comment"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:text="@string/close" />
+                android:layout_margin="@dimen/smallMargin"
+                />
 
 
         </RelativeLayout>

@@ -9,6 +9,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DatabaseRideInteractorImpl(private var databaseListener: RideInterface.OnDatabaseListener) : DatabaseRideInteractorInterface {
+
+    private var database = FirebaseDatabase.getInstance()
+    private var myRef = database.reference
+
+    override fun getDatabaseRef(): DatabaseReference {
+        return myRef
+    }
+
     override fun saveComment(comment: String, candidateId: String, currentRideHour: Int) {
 
 
@@ -21,9 +29,9 @@ class DatabaseRideInteractorImpl(private var databaseListener: RideInterface.OnD
         val rideHour = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.hasChildren()) {
-                    val child: String = dataSnapshot.children.last().key.toString()
+                    val lastRideHour: String = dataSnapshot.children.last().key.toString()
 
-                    databaseListener.returnLastRideHour(child)
+                    databaseListener.returnLastRideHour(lastRideHour)
                 } else {
                     databaseListener.returnLastRideHour("0")
                 }
@@ -57,10 +65,7 @@ class DatabaseRideInteractorImpl(private var databaseListener: RideInterface.OnD
         val candidateData = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val candidateName =
-                        dataSnapshot.child(NAME).value.toString()
-
-
+                val candidateName = dataSnapshot.child(NAME).value.toString()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {}
@@ -68,10 +73,4 @@ class DatabaseRideInteractorImpl(private var databaseListener: RideInterface.OnD
         myRef.child(USERS).child(candidateId).addListenerForSingleValueEvent(candidateData)
     }
 
-    private var database = FirebaseDatabase.getInstance()
-    private var myRef = database.reference
-
-    override fun getDatabaseRef(): DatabaseReference {
-        return myRef
-    }
 }
