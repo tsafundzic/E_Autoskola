@@ -54,15 +54,15 @@ class NewRide : Fragment(), NewRideInterface.View {
         presenter.checkBundleArguments(arguments)
     }
 
-    override fun setCandidateText(candidateId: String) {
+    override fun setCandidateText(candidateId: String, candidateName: String) {
         if (isAdded)
-            selectedCandidateName.text = candidateId
+            selectedCandidateName.text = candidateName
         startRide.isEnabled = true
-        startRide.setOnClickListener { startRideActivity(candidateId) }
+        startRide.setOnClickListener { startRideActivity(candidateId, candidateName) }
     }
 
-    private fun startRideActivity(candidateId: String) {
-        startActivity(context?.let { RideActivity.getLaunchIntent(it, candidateId) })
+    private fun startRideActivity(candidateId: String, candidateName: String) {
+        startActivity(context?.let { RideActivity.getLaunchIntent(it, candidateId, candidateName) })
     }
 
     override fun setBundleError() {

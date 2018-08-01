@@ -29,4 +29,16 @@
     <string name="cancel">Odustani</string>
     <string name="notSelected">Kandidat nije odabran</string>
     <string name="startRide">Pokreni vožnju</string>
+    <string name="ridehour">Sat vožnje</string>
+    <string name="ridestarted">Početak vožnje</string>
+    <string name="commentsOnRide">Komentari na vožnju</string>
+    <string name="endRide">Završi vožnju</string>
+    <string name="LocationPermissionNeeded">Upotreba lokacije</string>
+    <string name="LocationPermissionNeededExplanation">Potrebna je dozvola upotrebe lokacije kako bi aplikacija ispravno radila</string>
+    <string name="wrongQr">Pogrešan QR kod</string>
+    <string name="repeat">Ponovi</string>
+    <string name="rideFinishedSuccessful">Vožnja uspješno završena! Podaci su spremljeni!</string>
+    <string name="emptyCommentError">Dodaj komentar na vožnju</string>
+    <string name="rideended">Kraj vožnje</string>
+    <string name="close">Zatvori</string>
 </resources>

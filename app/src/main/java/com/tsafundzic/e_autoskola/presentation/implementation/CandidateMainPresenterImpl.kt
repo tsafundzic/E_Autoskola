@@ -6,6 +6,7 @@ import android.view.MenuItem
 import com.tsafundzic.e_autoskola.R
 import com.tsafundzic.e_autoskola.common.helpers.changeFragments
 import com.tsafundzic.e_autoskola.presentation.CandidateMainInterface
+import com.tsafundzic.e_autoskola.ui.ChatFragment
 import com.tsafundzic.e_autoskola.ui.candidateMain.CandidateAccountInfo
 import com.tsafundzic.e_autoskola.ui.candidateMain.CandidateRideHistory
 
@@ -23,6 +24,9 @@ class CandidateMainPresenterImpl : CandidateMainInterface.Presenter {
             }
             R.id.rideHistory -> {
                 changeFragments(fragmentLayout, CandidateRideHistory(), activity)
+            }
+            R.id.chat -> {
+                changeFragments(fragmentLayout, ChatFragment(), activity)
             }
         }
     }

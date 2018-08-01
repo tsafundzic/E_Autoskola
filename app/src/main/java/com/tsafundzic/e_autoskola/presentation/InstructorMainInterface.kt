@@ -20,7 +20,7 @@ interface InstructorMainInterface {
 
         fun callFragmentChange(fragmentLayout: Int, fragment: Fragment, activity: Activity)
 
-        fun checkIfHasExtras(extras: String?)
+        fun checkIfHasExtras(candidateId: String?,candidateName: String?)
 
     }
 

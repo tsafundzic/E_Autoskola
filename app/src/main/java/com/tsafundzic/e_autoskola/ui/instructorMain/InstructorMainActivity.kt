@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment
 import android.view.MenuItem
 import com.tsafundzic.e_autoskola.R
 import com.tsafundzic.e_autoskola.common.constants.BARCODE
+import com.tsafundzic.e_autoskola.common.constants.CANDIDATEID
+import com.tsafundzic.e_autoskola.common.constants.CANDIDATENAME
 import com.tsafundzic.e_autoskola.common.extensions.getIntent
 import com.tsafundzic.e_autoskola.presentation.InstructorMainInterface
 import com.tsafundzic.e_autoskola.presentation.implementation.InstructorMainPresenterImpl
@@ -18,8 +20,9 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
     companion object {
         fun getLaunchIntent(from: Context) = from.getIntent<InstructorMainActivity>().apply {
         }
-        fun getLaunchIntent(from: Context, barcode: String) = from.getIntent<InstructorMainActivity>().apply {
-            putExtra(BARCODE, barcode)
+        fun getLaunchIntent(from: Context, candidateId: String, candidateName: String) = from.getIntent<InstructorMainActivity>().apply {
+            putExtra(CANDIDATEID, candidateId)
+            putExtra(CANDIDATENAME, candidateName)
         }
     }
 
@@ -40,7 +43,7 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
     }
 
     private fun checkNewRideIntent() {
-        presenter.checkIfHasExtras(intent.getStringExtra(BARCODE))
+        presenter.checkIfHasExtras(intent.getStringExtra(CANDIDATEID), intent.getStringExtra(CANDIDATENAME))
     }
 
     override fun startAccountInfo() {

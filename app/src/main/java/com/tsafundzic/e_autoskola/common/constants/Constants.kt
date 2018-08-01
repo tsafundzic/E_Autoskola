@@ -30,5 +30,16 @@ const val IBAN: String = "iban"
 const val ID: String = "id"
 
 const val CANDIDATEID: String = "candidateId"
+const val CANDIDATENAME: String = "candidateName"
 
-const val BARCODE: String = "barcode"
+const val BARCODE = "barcode"
+
+const val RIDES = "rides"
+const val TIMESTAMP = "timestamp"
+const val LATIDUDE = "latitude"
+const val LONGITUDE = "longitude"
+const val LOCATION = "location"
+
+const val PERMISSIONSREQUESTLOCATION = 99
+
+const val COMMENTS ="comments"

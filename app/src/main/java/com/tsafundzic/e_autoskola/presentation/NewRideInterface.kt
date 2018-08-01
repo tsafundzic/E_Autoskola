@@ -6,7 +6,7 @@ interface NewRideInterface {
 
     interface View {
 
-        fun setCandidateText(candidateId: String)
+        fun setCandidateText(candidateId: String, candidateName: String)
 
         fun setBundleError()
 
