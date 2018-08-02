@@ -18,24 +18,25 @@ class DatabaseQrScannerInteractorImpl(private var databaseListener: QrCodeScanne
 
     override fun getCandidateNAme(candidateId: String) {
 
-        val candidateData = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
+        if (candidateId.contains(".")) {
+            databaseListener.returnDatabaseError()
+        } else {
+            val candidateData = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val candidateName =
-                        dataSnapshot.child(NAME).value.toString()
-                val candidateRole = dataSnapshot.child(ROLE).value.toString()
-                if (candidateName != "null" && candidateRole == CANDIDATE) {
-                    databaseListener.returnCandidateIdAndName(candidateId, candidateName)
-                } else {
-                    databaseListener.returnDatabaseError()
+                    val candidateName = dataSnapshot.child(NAME).value.toString()
+                    val candidateRole = dataSnapshot.child(ROLE).value.toString()
+                    if (candidateName != "null" && candidateRole == CANDIDATE) {
+                        databaseListener.returnCandidateIdAndName(candidateId, candidateName)
+                    } else {
+                        databaseListener.returnDatabaseError()
+                    }
                 }
 
+                override fun onCancelled(databaseError: DatabaseError) {}
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {}
+            myRef.child(USERS).child(candidateId).addListenerForSingleValueEvent(candidateData)
         }
-        myRef.child(USERS).child(candidateId).addListenerForSingleValueEvent(candidateData)
     }
-
 
 }

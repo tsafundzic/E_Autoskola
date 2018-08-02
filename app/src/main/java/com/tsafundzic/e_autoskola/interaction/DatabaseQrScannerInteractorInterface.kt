@@ -7,4 +7,5 @@ interface DatabaseQrScannerInteractorInterface {
     fun getDatabaseRef(): DatabaseReference
 
     fun getCandidateNAme(candidateId: String)
+
 }

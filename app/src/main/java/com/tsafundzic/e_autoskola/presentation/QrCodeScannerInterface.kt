@@ -6,8 +6,11 @@ import com.google.android.gms.vision.barcode.Barcode
 interface QrCodeScannerInterface {
 
     interface View {
+
         fun onSuccess(candidateId: String, candidateName: String)
+
         fun onFailure()
+
         fun stopCamera()
 
     }
