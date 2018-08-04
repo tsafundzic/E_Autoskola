@@ -9,8 +9,8 @@ import com.tsafundzic.e_autoskola.common.constants.ID
 import com.tsafundzic.e_autoskola.common.constants.NAME
 import com.tsafundzic.e_autoskola.common.helpers.changeFragments
 import com.tsafundzic.e_autoskola.presentation.InstructorMainInterface
-import com.tsafundzic.e_autoskola.ui.ChatFragment
 import com.tsafundzic.e_autoskola.ui.instructorMain.InstructorAccountInfo
+import com.tsafundzic.e_autoskola.ui.instructorMain.InstructorChatFragment
 import com.tsafundzic.e_autoskola.ui.instructorMain.NewRide
 import com.tsafundzic.e_autoskola.ui.instructorMain.RideHistory
 
@@ -48,7 +48,7 @@ class InstructorMainPresenterImpl : InstructorMainInterface.Presenter {
                 changeFragments(fragmentLayout, RideHistory(), activity)
             }
             R.id.chat -> {
-                changeFragments(fragmentLayout, ChatFragment(), activity)
+                changeFragments(fragmentLayout, InstructorChatFragment(), activity)
             }
 
         }

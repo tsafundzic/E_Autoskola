@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary_darker">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/smallMargin"
+            android:layout_marginRight="@dimen/smallMargin"
+            android:src="@drawable/ic_previous"
+            android:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/connectedUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/back"
+            android:textColor="@color/whiteIron" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/actionBar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/messagesList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp" />
+
+        <EditText
+            android:id="@+id/edit_text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/smallMargin"
+            android:background="@drawable/rounded_text_input"
+            android:hint="@string/typeMessage"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/smallPadding"
+            android:textColorHint="@color/grey" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

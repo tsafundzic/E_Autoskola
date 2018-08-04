@@ -32,6 +32,31 @@ import kotlinx.android.synthetic.main.fragment_candidate_ride_history.*
 
 
 class CandidateRideHistory : Fragment(), CandidateRideHistoryInterface.View, OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+
+
+    private lateinit var presenter: CandidateRideHistoryInterface.Presenter
+
+    private lateinit var mGoogleMap: GoogleMap
+
+    private lateinit var mGoogleApiClient: GoogleApiClient
+
+    lateinit var mLocationRequest: LocationRequest
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_candidate_ride_history, container, false)
+
+        val nextRideHour: ImageButton = view.findViewById(R.id.nextHour)
+        val previousRideHour: ImageButton = view.findViewById(R.id.previousHour)
+        injectDependencies()
+
+        setRideData()
+        nextRideHour.setOnClickListener { nextHourChecked() }
+        previousRideHour.setOnClickListener { previousHourChecked() }
+
+        return view
+    }
+
     override fun setComment(rideComment: String) {
         if (isAdded)
             comment.text = rideComment
@@ -106,36 +131,11 @@ class CandidateRideHistory : Fragment(), CandidateRideHistoryInterface.View, OnM
 
     override fun onConnectionFailed(p0: ConnectionResult) {}
 
-    override fun onLocationChanged(p0: Location?) {
-        setRideData()
-    }
+    override fun onLocationChanged(p0: Location?) {}
 
 
     private fun setRideData() {
         presenter.getCandidateData()
-    }
-
-    private lateinit var presenter: CandidateRideHistoryInterface.Presenter
-
-    private lateinit var mGoogleMap: GoogleMap
-
-    private lateinit var mGoogleApiClient: GoogleApiClient
-
-    lateinit var mLocationRequest: LocationRequest
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_candidate_ride_history, container, false)
-
-        val nextRideHour: ImageButton = view.findViewById(R.id.nextHour)
-        val previousRideHour: ImageButton = view.findViewById(R.id.previousHour)
-        injectDependencies()
-
-
-        nextRideHour.setOnClickListener { nextHourChecked() }
-        previousRideHour.setOnClickListener { previousHourChecked() }
-
-        return view
     }
 
     private fun nextHourChecked() {

@@ -1,4 +1,4 @@
-package com.tsafundzic.e_autoskola.ui
+package com.tsafundzic.e_autoskola.ui.instructorMain
 
 
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tsafundzic.e_autoskola.InstructorAdapter
+import com.tsafundzic.e_autoskola.CandidateAdapter
 import com.tsafundzic.e_autoskola.MessagesActivity
 
 import com.tsafundzic.e_autoskola.R
@@ -19,10 +19,10 @@ import com.tsafundzic.e_autoskola.presentation.implementation.ChatPresenterImpl
 import java.util.*
 
 
-class ChatFragment : Fragment(), ChatInterface.View, ChatInterface.OnCandidateClickListener {
+class InstructorChatFragment : Fragment(), ChatInterface.View, ChatInterface.onInstructorClickListener {
 
     private lateinit var presenter: ChatInterface.Presenter
-    private val adapter = InstructorAdapter(this)
+    private val adapter = CandidateAdapter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -36,31 +36,30 @@ class ChatFragment : Fragment(), ChatInterface.View, ChatInterface.OnCandidateCl
 
     private fun injectDependencies() {
         presenter = ChatPresenterImpl(this)
-        presenter.getInstructorList()
+        presenter.getCandidatesList()
     }
 
     private fun setAdapter(view: View) {
-        val listOfInstructors: RecyclerView = view.findViewById(R.id.usersList)
-
-        listOfInstructors.setHasFixedSize(true)
-        listOfInstructors.layoutManager = LinearLayoutManager(context)
-        listOfInstructors.adapter = adapter
+        val listOfCandidates: RecyclerView = view.findViewById(R.id.usersList)
+        listOfCandidates.setHasFixedSize(true)
+        listOfCandidates.layoutManager = LinearLayoutManager(context)
+        listOfCandidates.adapter = adapter
     }
 
-    override fun startMessageActivity(instructor: Instructor) {
-        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, instructor.role, instructor.name) })
+    override fun showCandidatesItems(candidates: ArrayList<Candidate>) {
+        adapter.setCandidates(candidates)
     }
 
-    override fun onInstructorClick(instructor: Instructor) {
-        presenter.startChat(instructor)
+    override fun startMessageActivity(candidate: Candidate) {
+        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, candidate.category, candidate.name) })
     }
 
-    override fun showInstructorItems(instructors: ArrayList<Instructor>) {
-        adapter.setInstructors(instructors)
+    override fun onCandidateClick(candidate: Candidate) {
+        presenter.startChat(candidate)
     }
 
-    override fun startMessageActivity(candidate: Candidate) {}
+    override fun startMessageActivity(instructor: Instructor) {}
 
-    override fun showCandidatesItems(candidates: ArrayList<Candidate>) {}
+    override fun showInstructorItems(instructors: ArrayList<Instructor>) {}
 
 }

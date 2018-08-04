@@ -13,5 +13,6 @@
 
     <color name="black">#000000</color>
     <color name="iron">#CCCCCC</color>
+    <color name="whiteIron">#DDDDDD</color>
     <color name="grey">#aaaaaa</color>
 </resources>
