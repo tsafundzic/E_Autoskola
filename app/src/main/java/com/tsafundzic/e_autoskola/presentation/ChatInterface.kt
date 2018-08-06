@@ -7,13 +7,14 @@ import java.util.*
 interface ChatInterface {
 
     interface View {
+
         fun showInstructorItems(instructors: ArrayList<Instructor>)
 
         fun showCandidatesItems(candidates: ArrayList<Candidate>)
 
-        fun startMessageActivity(candidate: Candidate)
+        fun startMessageActivity(candidate: Candidate, instructorId: String, instructorName: String)
 
-        fun startMessageActivity(instructor: Instructor)
+        fun startMessageActivity(instructor: Instructor, candidateId: String, candidateName: String)
 
     }
 
@@ -49,7 +50,7 @@ interface ChatInterface {
         }
     }
 
-    interface OnCandidateClickListener{
+    interface OnCandidateClickListener {
 
         fun onInstructorClick(instructor: Instructor)
         operator fun invoke(instructor: Candidate) {

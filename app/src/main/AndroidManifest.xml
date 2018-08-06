@@ -53,7 +53,10 @@
             android:name=".ui.RideActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".MessagesActivity"></activity>
+        <activity
+            android:name=".MessagesActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 
 </manifest>

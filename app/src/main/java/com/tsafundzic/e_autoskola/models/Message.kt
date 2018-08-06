@@ -1,6 +1,6 @@
 package com.tsafundzic.e_autoskola.models
 
-data class Chat(
+data class Message(
         var sender: String,
         var receiver: String,
         var senderUid: String,

@@ -42,4 +42,14 @@ const val LOCATION = "location"
 
 const val PERMISSIONSREQUESTLOCATION = 99
 
-const val COMMENTS ="comments"
+const val COMMENTS = "comments"
+
+const val CHATS = "chats"
+const val RECEIVERID = "receiverUid"
+const val RECEIVER = "receiver"
+const val RECEIVERNAME = "receiverName"
+const val SENDERID = "senderUid"
+const val SENDER = "sender"
+const val SENDERNAME = "senderName"
+const val MESSAGE = "message"
+const val IDENTIFICATION = "identification"

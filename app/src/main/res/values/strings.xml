@@ -45,4 +45,5 @@
     <string name="rideHourFormat">Sat vožnje: %1$d</string>
     <string name="checkRidesDetails">Pregled detalja vožnje</string>
     <string name="typeMessage">Pošalji poruku</string>
+    <string name="emptyMessage">Prazna poruka</string>
 </resources>

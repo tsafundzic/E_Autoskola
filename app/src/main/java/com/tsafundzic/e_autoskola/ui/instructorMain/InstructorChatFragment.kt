@@ -8,10 +8,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tsafundzic.e_autoskola.CandidateAdapter
+import com.tsafundzic.e_autoskola.ui.adapters.CandidateAdapter
 import com.tsafundzic.e_autoskola.MessagesActivity
 
 import com.tsafundzic.e_autoskola.R
+import com.tsafundzic.e_autoskola.common.constants.INSTRUCTOR
 import com.tsafundzic.e_autoskola.models.Candidate
 import com.tsafundzic.e_autoskola.models.Instructor
 import com.tsafundzic.e_autoskola.presentation.ChatInterface
@@ -50,15 +51,15 @@ class InstructorChatFragment : Fragment(), ChatInterface.View, ChatInterface.onI
         adapter.setCandidates(candidates)
     }
 
-    override fun startMessageActivity(candidate: Candidate) {
-        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, candidate.category, candidate.name) })
+    override fun startMessageActivity(candidate: Candidate, instructorId: String, instructorName: String) {
+        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, candidate.category, candidate.name, instructorId, instructorName, INSTRUCTOR) })
     }
 
     override fun onCandidateClick(candidate: Candidate) {
         presenter.startChat(candidate)
     }
 
-    override fun startMessageActivity(instructor: Instructor) {}
+    override fun startMessageActivity(instructor: Instructor, candidateId: String, candidateName: String) {}
 
     override fun showInstructorItems(instructors: ArrayList<Instructor>) {}
 

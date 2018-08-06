@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/smallPadding">
+
+    <TextView
+        android:id="@+id/chatMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/userInitial"
+        android:layout_toRightOf="@id/userInitial"
+        android:background="@drawable/rounded_rect_bg_other"
+        android:padding="@dimen/smallPadding"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/primary_darker"
+        tools:text="test!" />
+
+    <TextView
+        android:id="@+id/userInitial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/smallMargin"
+        android:layout_marginTop="@dimen/marginInitial"
+        android:background="@drawable/circle_accent"
+        android:gravity="center"
+        android:maxEms="1"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/whiteIron"
+        android:textStyle="bold"
+        tools:text="a" />
+
+</RelativeLayout>

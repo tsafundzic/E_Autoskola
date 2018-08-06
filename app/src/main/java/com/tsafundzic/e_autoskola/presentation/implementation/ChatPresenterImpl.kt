@@ -9,30 +9,32 @@ import com.tsafundzic.e_autoskola.presentation.ChatInterface
 import com.tsafundzic.e_autoskola.presentation.MainInterface
 
 class ChatPresenterImpl(private val view: ChatInterface.View) : ChatInterface.Presenter, ChatInterface.onDatabaseListener, MainInterface.onLoginListener {
-    override fun startChat(instructor: Instructor) {
-        view.startMessageActivity(instructor)
-    }
 
-    override fun startChat(candidate: Candidate) {
-        view.startMessageActivity(candidate)
-    }
-
-    private var candidatesList = ArrayList<Candidate>()
-    private var instructorsList = ArrayList<Instructor>()
+    private lateinit var currentInstructor: Instructor
+    private lateinit var currentCandidate: Candidate
 
     private var databaseInteractor = DatabaseChatInteractorImpl(this)
     private var userInteractor: UserInteractorImpl = UserInteractorImpl(this)
 
+    override fun startChat(instructor: Instructor) {
+        view.startMessageActivity(instructor, currentCandidate.category, currentCandidate.name)
+    }
+
+    override fun startChat(candidate: Candidate) {
+        view.startMessageActivity(candidate, currentInstructor.role, currentInstructor.name)
+    }
+
     override fun returnCurrentInstructorData(instructor: Instructor) {
+        currentInstructor = instructor
         databaseInteractor.getAssignedCandidates(instructor)
     }
 
     override fun returnCurrentCandidateData(candidate: Candidate) {
+        currentCandidate = candidate
         databaseInteractor.getSelectedInstructor(candidate)
     }
 
     override fun returnInstructors(instructors: ArrayList<Instructor>) {
-        instructorsList = instructors
         view.showInstructorItems(instructors)
     }
 
@@ -41,7 +43,6 @@ class ChatPresenterImpl(private val view: ChatInterface.View) : ChatInterface.Pr
     }
 
     override fun returnAssignedCandidates(candidates: ArrayList<Candidate>) {
-        candidatesList = candidates
         view.showCandidatesItems(candidates)
     }
 

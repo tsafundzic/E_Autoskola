@@ -1,8 +1,9 @@
-package com.tsafundzic.e_autoskola
+package com.tsafundzic.e_autoskola.ui.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.tsafundzic.e_autoskola.R
 import com.tsafundzic.e_autoskola.models.Instructor
 import com.tsafundzic.e_autoskola.presentation.ChatInterface
 
@@ -11,7 +12,7 @@ class InstructorAdapter(private val OnCandidateClickListener: ChatInterface.OnCa
     private var instructorss: MutableList<Instructor> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstructorViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.rc_item_friend, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_user_info, parent, false)
         return InstructorViewHolder(view, OnCandidateClickListener)
     }
 

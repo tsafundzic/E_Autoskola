@@ -26,8 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/back"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/whiteIron" />
 
+        <ImageView
+            android:id="@+id/call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_phone"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/smallMargin"
+            android:layout_marginRight="@dimen/smallMargin" />
 
     </RelativeLayout>
 
@@ -35,7 +45,8 @@
         android:id="@+id/messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/actionBar">
+        android:layout_below="@+id/actionBar"
+        android:background="@color/whiteIron">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/messagesList"
@@ -43,20 +54,33 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="60dp" />
 
+
         <EditText
-            android:id="@+id/edit_text_message"
+            android:id="@+id/textMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/smallMargin"
+            android:layout_toLeftOf="@+id/sendMessage"
             android:background="@drawable/rounded_text_input"
             android:hint="@string/typeMessage"
-            android:imeOptions="actionSend"
             android:inputType="text"
             android:maxLines="1"
-            android:padding="@dimen/smallPadding"
-            android:textColorHint="@color/grey" />
 
+            android:padding="@dimen/smallPadding" />
+
+        <ImageButton
+            android:id="@+id/sendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/marginButtonSend"
+            android:layout_marginRight="@dimen/smallMargin"
+            android:background="@color/whiteIron"
+            android:src="@drawable/ic_send"
+            android:tint="@color/primary_darker" />
 
     </RelativeLayout>
 </RelativeLayout>
