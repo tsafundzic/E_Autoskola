@@ -1,9 +1,13 @@
 package com.tsafundzic.e_autoskola.ui.instructorMain
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
+import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import com.tsafundzic.e_autoskola.R
 import com.tsafundzic.e_autoskola.common.extensions.getIntent
 import android.util.Log
@@ -19,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_qr_code_scanner.*
 import java.io.IOException
 
 
-class QrCodeScannerActivity : AppCompatActivity(), QrCodeScannerInterface.View {
+class QrCodeScannerActivity : AppCompatActivity(), QrCodeScannerInterface.View, ActivityCompat.OnRequestPermissionsResultCallback {
 
     lateinit var presenter: QrCodeScannerInterface.Presenter
 
@@ -36,8 +40,31 @@ class QrCodeScannerActivity : AppCompatActivity(), QrCodeScannerInterface.View {
         setContentView(R.layout.activity_qr_code_scanner)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        permissionStatus()
+    }
 
-        injectDependencies()
+    private fun permissionStatus() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+            injectDependencies()
+        else
+            checkPermission()
+    }
+
+    private fun checkPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 42)
+        else
+            permissionStatus()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (requestCode == 42) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED))
+                permissionStatus()
+            else
+                onBackPressed()
+            return
+        }
     }
 
     private fun injectDependencies() {
