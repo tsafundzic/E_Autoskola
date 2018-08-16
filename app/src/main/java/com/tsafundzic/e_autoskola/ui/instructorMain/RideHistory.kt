@@ -62,6 +62,7 @@ class RideHistory : Fragment(), InstructorRideHistoryInterface.View, OnMapReadyC
         selectedCandidate.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 presenter.candidateReselected(position)
+                mGoogleMap.clear()
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {}
