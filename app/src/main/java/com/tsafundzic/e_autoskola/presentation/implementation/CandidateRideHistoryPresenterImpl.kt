@@ -82,10 +82,10 @@ class CandidateRideHistoryPresenterImpl(private val view: CandidateRideHistoryIn
     }
 
     override fun returnRideRouteLocations(mLatlng: LatLng) {
-        val bounds: LatLngBounds
+       // val bounds: LatLngBounds
         val builder = LatLngBounds.Builder()
         builder.include(mLatlng)
-        bounds = builder.build()
+        val bounds = builder.build()
 
         view.setRideRoute(mLatlng, bounds)
     }

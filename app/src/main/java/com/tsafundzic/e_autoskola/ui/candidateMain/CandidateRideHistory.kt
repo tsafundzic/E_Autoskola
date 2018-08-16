@@ -95,7 +95,7 @@ class CandidateRideHistory : Fragment(), CandidateRideHistoryInterface.View, OnM
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_location))
         val mMarker = mGoogleMap.addMarker(mMarkerOption)
 
-        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 2))
+       mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mLatlng, 11.0f))
     }
 
     override fun setCandidateName(name: String) {

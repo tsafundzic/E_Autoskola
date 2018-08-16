@@ -3,7 +3,7 @@ package com.tsafundzic.e_autoskola.presentation
 import android.content.Context
 import android.location.Location
 import com.google.android.gms.maps.GoogleMap
-import com.tsafundzic.e_autoskola.ui.RideActivity
+import com.tsafundzic.e_autoskola.ui.instructorMain.RideActivity
 
 interface RideInterface {
 

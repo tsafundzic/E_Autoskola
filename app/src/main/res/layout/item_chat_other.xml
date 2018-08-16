@@ -36,4 +36,14 @@
         android:textStyle="bold"
         tools:text="a" />
 
+
+    <TextView
+        android:id="@+id/messageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chatMessage"
+        android:layout_toRightOf="@id/userInitial"
+        android:textSize="@dimen/smallText"
+        tools:text="test" />
+
 </RelativeLayout>

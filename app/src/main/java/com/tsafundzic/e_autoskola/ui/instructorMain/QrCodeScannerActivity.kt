@@ -1,4 +1,4 @@
-package com.tsafundzic.e_autoskola.ui
+package com.tsafundzic.e_autoskola.ui.instructorMain
 
 import android.app.AlertDialog
 import android.content.Context
@@ -10,11 +10,11 @@ import android.util.Log
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.Detector
 import android.view.SurfaceHolder
+import android.view.WindowManager
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.tsafundzic.e_autoskola.presentation.QrCodeScannerInterface
 import com.tsafundzic.e_autoskola.presentation.implementation.QrCodeScannerPresenterImpl
-import com.tsafundzic.e_autoskola.ui.instructorMain.InstructorMainActivity
 import kotlinx.android.synthetic.main.activity_qr_code_scanner.*
 import java.io.IOException
 
@@ -34,6 +34,8 @@ class QrCodeScannerActivity : AppCompatActivity(), QrCodeScannerInterface.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_code_scanner)
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         injectDependencies()
     }

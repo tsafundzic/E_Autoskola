@@ -15,6 +15,9 @@ import com.tsafundzic.e_autoskola.ui.instructorMain.NewRide
 import com.tsafundzic.e_autoskola.ui.instructorMain.RideHistory
 
 class InstructorMainPresenterImpl : InstructorMainInterface.Presenter {
+    override fun startAccountInfo() {
+        view.startAccountInfo()
+    }
 
 
     private lateinit var view: InstructorMainInterface.View
@@ -31,8 +34,6 @@ class InstructorMainPresenterImpl : InstructorMainInterface.Presenter {
             args.putString(NAME, candidateName)
             fragment.arguments = args
             view.startNewRide(fragment)
-        } else {
-            view.startAccountInfo()
         }
     }
 

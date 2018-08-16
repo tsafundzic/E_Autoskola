@@ -53,3 +53,4 @@ const val SENDER = "sender"
 const val SENDERNAME = "senderName"
 const val MESSAGE = "message"
 const val IDENTIFICATION = "identification"
+

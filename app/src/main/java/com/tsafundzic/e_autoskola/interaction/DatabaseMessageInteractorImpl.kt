@@ -4,7 +4,6 @@ import com.google.firebase.database.*
 import com.tsafundzic.e_autoskola.common.constants.*
 import com.tsafundzic.e_autoskola.models.Message
 import com.tsafundzic.e_autoskola.presentation.MessagesInterface
-import java.util.HashMap
 
 class DatabaseMessageInteractorImpl(private var databaseListener: MessagesInterface.OnDatabaseListener) : DatabaseMessagesInteractorInterface {
 
@@ -19,12 +18,14 @@ class DatabaseMessageInteractorImpl(private var databaseListener: MessagesInterf
         val chatMessages = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 getDatabaseRef().child(USERS).child(candidateId).child(CHATS).child(chatId).child(message.timestamp).setValue(message)
+                databaseListener.setNotification(message)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {}
         }
         getDatabaseRef().child(USERS).child(candidateId).child(CHATS).addListenerForSingleValueEvent(chatMessages)
     }
+
 
 
     override fun getMessages(receiverId: String, senderId: String, candidateId: String, chatId: String) {

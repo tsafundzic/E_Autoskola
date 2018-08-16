@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tsafundzic.e_autoskola.ui.adapters.CandidateAdapter
-import com.tsafundzic.e_autoskola.MessagesActivity
+import com.tsafundzic.e_autoskola.ui.MessagesActivity
 
 import com.tsafundzic.e_autoskola.R
 import com.tsafundzic.e_autoskola.common.constants.INSTRUCTOR
@@ -52,7 +52,7 @@ class InstructorChatFragment : Fragment(), ChatInterface.View, ChatInterface.onI
     }
 
     override fun startMessageActivity(candidate: Candidate, instructorId: String, instructorName: String) {
-        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, candidate.category, candidate.name, instructorId, instructorName, INSTRUCTOR) })
+        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, candidate.category, candidate.name, candidate.phone, instructorId, instructorName, INSTRUCTOR) })
     }
 
     override fun onCandidateClick(candidate: Candidate) {

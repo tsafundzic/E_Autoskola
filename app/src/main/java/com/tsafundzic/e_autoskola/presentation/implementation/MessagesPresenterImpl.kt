@@ -1,11 +1,24 @@
 package com.tsafundzic.e_autoskola.presentation.implementation
 
+import android.support.v4.app.NotificationCompat
 import com.tsafundzic.e_autoskola.common.constants.CANDIDATE
 import com.tsafundzic.e_autoskola.interaction.DatabaseMessageInteractorImpl
 import com.tsafundzic.e_autoskola.models.Message
 import com.tsafundzic.e_autoskola.presentation.MessagesInterface
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.RemoteMessage
+
+
+
+
 
 class MessagesPresenterImpl(private var view: MessagesInterface.View) : MessagesInterface.Preesnter, MessagesInterface.OnDatabaseListener {
+    override fun setNotification(message: Message) {
+        view.setNotification(message)
+
+
+
+    }
 
     override fun sendNewMessage(receiverId: String, receiverName: String, senderId: String, senderName: String, identification: String, messageText: String) {
         if (messageText.isEmpty()) {

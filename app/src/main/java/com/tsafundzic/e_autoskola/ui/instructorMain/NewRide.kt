@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.tsafundzic.e_autoskola.R
-import com.tsafundzic.e_autoskola.ui.QrCodeScannerActivity
 import com.tsafundzic.e_autoskola.presentation.NewRideInterface
 import com.tsafundzic.e_autoskola.presentation.implementation.NewRidePresenterImpl
-import com.tsafundzic.e_autoskola.ui.RideActivity
 import kotlinx.android.synthetic.main.fragment_new_ride.*
 
 

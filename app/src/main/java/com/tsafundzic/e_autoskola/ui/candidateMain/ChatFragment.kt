@@ -1,4 +1,4 @@
-package com.tsafundzic.e_autoskola.ui
+package com.tsafundzic.e_autoskola.ui.candidateMain
 
 
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tsafundzic.e_autoskola.ui.adapters.InstructorAdapter
-import com.tsafundzic.e_autoskola.MessagesActivity
+import com.tsafundzic.e_autoskola.ui.MessagesActivity
 
 import com.tsafundzic.e_autoskola.R
 import com.tsafundzic.e_autoskola.common.constants.CANDIDATE
@@ -46,7 +46,7 @@ class ChatFragment : Fragment(), ChatInterface.View, ChatInterface.OnCandidateCl
     }
 
     override fun startMessageActivity(instructor: Instructor, candidateId: String, candidateName: String) {
-        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, instructor.role, instructor.name, candidateId, candidateName, CANDIDATE) })
+        startActivity(context?.let { MessagesActivity.getLaunchIntent(it, instructor.role, instructor.name, instructor.phone, candidateId, candidateName, CANDIDATE) })
     }
 
     override fun onInstructorClick(instructor: Instructor) {

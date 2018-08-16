@@ -11,7 +11,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.tsafundzic.e_autoskola.common.constants.PERMISSIONSREQUESTLOCATION
 import com.tsafundzic.e_autoskola.interaction.DatabaseRideInteractorImpl
 import com.tsafundzic.e_autoskola.presentation.RideInterface
-import com.tsafundzic.e_autoskola.ui.RideActivity
+import com.tsafundzic.e_autoskola.ui.instructorMain.RideActivity
 import java.text.SimpleDateFormat
 import java.util.*
 

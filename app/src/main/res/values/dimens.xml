@@ -11,4 +11,5 @@
     <dimen name="user_icon_height">36dp</dimen>
     <dimen name="marginButtonSend">16dp</dimen>
     <dimen name="marginInitial">3dp</dimen>
+    <dimen name="smallText">12sp</dimen>
 </resources>

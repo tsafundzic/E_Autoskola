@@ -10,6 +10,8 @@ interface MessagesInterface {
 
         fun setMessageError()
 
+        fun setNotification(message: Message)
+
     }
 
     interface Preesnter {
@@ -23,6 +25,8 @@ interface MessagesInterface {
     interface OnDatabaseListener {
 
         fun returnMessage(messages: ArrayList<Message>)
+
+        fun setNotification(message: Message)
 
     }
 

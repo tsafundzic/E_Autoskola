@@ -15,9 +15,9 @@ class MessagesAdapter : RecyclerView.Adapter<MessagesViewHolder>() {
 
     private val messages = ArrayList<Message>()
 
-    fun setMessages(instructors: ArrayList<Message>) {
+    fun setMessages(listOfMessages: ArrayList<Message>) {
         messages.clear()
-        messages.addAll(instructors)
+        messages.addAll(listOfMessages)
         notifyDataSetChanged()
     }
 

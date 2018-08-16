@@ -21,6 +21,8 @@ interface InstructorMainInterface {
 
         fun checkIfHasExtras(candidateId: String?,candidateName: String?)
 
+        fun startAccountInfo()
+
     }
 
 }

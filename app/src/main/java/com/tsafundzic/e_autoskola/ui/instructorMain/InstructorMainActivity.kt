@@ -19,6 +19,7 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
     companion object {
         fun getLaunchIntent(from: Context) = from.getIntent<InstructorMainActivity>().apply {
         }
+
         fun getLaunchIntent(from: Context, candidateId: String, candidateName: String) = from.getIntent<InstructorMainActivity>().apply {
             putExtra(CANDIDATEID, candidateId)
             putExtra(CANDIDATENAME, candidateName)
@@ -60,6 +61,8 @@ class InstructorMainActivity : AppCompatActivity(), BottomNavigationView.OnNavig
     private fun injectDependencies() {
         presenter = InstructorMainPresenterImpl()
         presenter.setView(this)
+
+        presenter.startAccountInfo()
     }
 
     private fun initBottomNavigation() {
